@@ -1,16 +1,16 @@
-Transaction.java
- Transaction
-Hashable.java
- Hashable
-DummyTreeNode.java
- DummyTreeNode
-Consts.java
- Consts
-Main.java
- Main
-Blockchain.java
- Blockchain
-Block.java
- Block
-BlockHeader.java
- BlockHeader
+main/BlockchainData.java
+ main.BlockchainData
+primitives/Transaction.java
+ primitives.Transaction
+merkle_tree/Hashable.java
+ merkle_tree.Hashable
+main/Main.java
+ main.Main
+primitives/Block.java
+ primitives.Block
+merkle_tree/DummyTreeNode.java
+ merkle_tree.DummyTreeNode
+primitives/BlockHeader.java
+ primitives.BlockHeader
+misc/Common.java
+ misc.Common

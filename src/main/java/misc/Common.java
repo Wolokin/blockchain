@@ -1,7 +1,9 @@
+package misc;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Consts {
+public class Common {
     public static int hashLength = 32;
 
     public static byte[] hashBytes(byte[] toHash) {

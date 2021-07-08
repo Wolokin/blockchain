@@ -1,23 +1,27 @@
+package primitives;
+
+import merkle_tree.Hashable;
+import misc.Common;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.time.Instant;
-import java.util.Arrays;
 
-public class BlockHeader implements Hashable{
+public class BlockHeader implements Hashable {
     private final byte[] previousBlockHash;
     private final Hashable merkleRoot;
     private final long timestamp;
 
-    public BlockHeader(byte[] previousBlockHash, long timestamp, Hashable merkleRoot) {
+    public BlockHeader(byte[] previousBlockHash, Hashable merkleRoot, long timestamp) {
         this.previousBlockHash = previousBlockHash;
         this.merkleRoot = merkleRoot;
         this.timestamp = timestamp;
     }
 
     public BlockHeader(byte[] previousBlockHash, Hashable merkleRoot) {
-        this(previousBlockHash, Instant.now().toEpochMilli(), merkleRoot);
+        this(previousBlockHash, merkleRoot, Instant.now().toEpochMilli());
     }
 
     // Courtesy of https://stackoverflow.com/a/943963/14708982
@@ -43,7 +47,7 @@ public class BlockHeader implements Hashable{
             e.printStackTrace();
         }
 
-        return Consts.hashBytes(baos.toByteArray());
+        return Common.hashBytes(baos.toByteArray());
     }
 
     @Override

@@ -1,3 +1,7 @@
+import main.BlockchainData;
+import misc.Common;
+import primitives.Block;
+import primitives.Transaction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -5,12 +9,12 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class BlockchainTest {
-    Blockchain blockchain;
+public class BlockchainDataTest {
+    BlockchainData blockchain;
     Random random = new Random(42);
 
-    public static Blockchain blockchainInit() {
-        Blockchain newBlockchain = new Blockchain();
+    public static BlockchainData blockchainInit() {
+        BlockchainData newBlockchain = new BlockchainData();
         newBlockchain.createAndAddBlock(TransactionTest.transactionListInit());
         LinkedList<Transaction> reversedTransactionList = TransactionTest.transactionListInit();
         Collections.reverse(reversedTransactionList);
@@ -20,13 +24,13 @@ public class BlockchainTest {
 
     @Test
     void defaultConstructorTest() {
-        blockchain = new Blockchain();
+        blockchain = new BlockchainData();
         Assertions.assertEquals(1, blockchain.getBlockchainLength());
     }
 
     @Test
     void createAndAddBlockTest() {
-        blockchain = new Blockchain();
+        blockchain = new BlockchainData();
         blockchain.createAndAddBlock(TransactionTest.transactionListInit());
         Assertions.assertEquals(2, blockchain.getBlockchainLength());
     }
@@ -40,7 +44,7 @@ public class BlockchainTest {
     @Test
     void verifyIncorrectBlockchainWrongLastBlockTest() {
         blockchain = blockchainInit();
-        byte[] someRandomHash = new byte[Consts.hashLength];
+        byte[] someRandomHash = new byte[Common.hashLength];
         random.nextBytes(someRandomHash);
         Block someRandomBlock = new Block(someRandomHash, TransactionTest.transactionListInit());
         blockchain.addBlock(someRandomBlock);
@@ -49,9 +53,9 @@ public class BlockchainTest {
 
     @Test
     void verifyIncorrectBlockchainWrongSecondBlockTest() {
-        blockchain = new Blockchain();
+        blockchain = new BlockchainData();
 
-        byte[] someRandomHash = new byte[Consts.hashLength];
+        byte[] someRandomHash = new byte[Common.hashLength];
         random.nextBytes(someRandomHash);
         Block someRandomBlock = new Block(someRandomHash, TransactionTest.transactionListInit());
         blockchain.addBlock(someRandomBlock);

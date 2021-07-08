@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package primitives;
 
 public class Transaction {
     private final byte[] transactionId;

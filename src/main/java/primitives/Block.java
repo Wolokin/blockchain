@@ -1,3 +1,8 @@
+package primitives;
+
+import merkle_tree.DummyTreeNode;
+import misc.Common;
+
 import java.util.LinkedList;
 
 public class Block {
@@ -19,7 +24,6 @@ public class Block {
         return blockHeader;
     }
 
-    // Czy podczas weryfikacji nie powinnismy wyliczac hasha zamiast brac gotowego? Poki co tak zrobilem
     public byte[] calculateBlockHash() {
         return blockHash = blockHeader.getHash();
     }
@@ -33,8 +37,8 @@ public class Block {
         return "Block{" +
                 "\n\tblockId: \"" + blockId +
                 "\", \n\tblockHash: \"" + BlockHeader.bytesToHexString(blockHash) +
-                "\", \n\tblockHeader: \"" + Consts.increaseStringIndentation(blockHeader.toString()) +
-                "\", \n\ttransactionList: \"" + Consts.increaseStringIndentation(transactionList.toString()) +
+                "\", \n\tblockHeader: \"" + Common.increaseStringIndentation(blockHeader.toString()) +
+                "\", \n\ttransactionList: \"" + Common.increaseStringIndentation(transactionList.toString()) +
                 "\"\n}";
     }
 }

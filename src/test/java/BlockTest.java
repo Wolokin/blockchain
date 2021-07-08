@@ -1,3 +1,6 @@
+import misc.Common;
+import primitives.Block;
+import primitives.Transaction;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -7,7 +10,7 @@ public class BlockTest {
     void toStringTest() {
         LinkedList<Transaction> transactionList = TransactionTest.transactionListInit();
 
-        Block block = new Block(new byte[Consts.hashLength], transactionList);
+        Block block = new Block(new byte[Common.hashLength], transactionList);
         System.out.println(block);
     }
 }

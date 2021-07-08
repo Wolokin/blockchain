@@ -1,3 +1,8 @@
+package merkle_tree;
+
+import misc.Common;
+import primitives.Transaction;
+
 import java.util.LinkedList;
 
 public class DummyTreeNode implements Hashable{
@@ -8,7 +13,7 @@ public class DummyTreeNode implements Hashable{
         for(Transaction transaction : transactionsList) {
             toHash.append(transaction.toString());
         }
-        hash = Consts.hashBytes(toHash.toString().getBytes());
+        hash = Common.hashBytes(toHash.toString().getBytes());
     }
 
     @Override

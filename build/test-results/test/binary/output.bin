@@ -1,0 +1,84 @@
+Transaction{
+ 	transactionId: "Transaction0",
+ 	data: "Some transaction data",
+$	signature: "Transaction signature"
+}
+Transaction{
+ 	transactionId: "Transaction1",
+&	data: "Some other transaction data",
+0	signature: "A different transaction signature"
+}
+Blockchain{
+	blockchain: "[Block{
+		blockId: "5", 
+R		blockHash: "DEAF6B2A8FC3477EB298BA147DB74875C3396FEE2A583DCE713F1CA1D4619726", 
+		blockHeader: "BlockHeader{
+Z			previousBlockHash: "0000000000000000000000000000000000000000000000000000000000000000",
+5			merkleRoot: "merkle_tree.DummyTreeNode@35ef8810",
+			timestamp: "1625759670746"
+		}", 
+		transactionList: "[]"
+	}, Block{
+		blockId: "6", 
+R		blockHash: "0532F1E7C62826BE0E06D9854E48B408A2232C738B2E45DF58581242D19FF8AF", 
+		blockHeader: "BlockHeader{
+Z			previousBlockHash: "DEAF6B2A8FC3477EB298BA147DB74875C3396FEE2A583DCE713F1CA1D4619726",
+5			merkleRoot: "merkle_tree.DummyTreeNode@68e81b44",
+			timestamp: "1625759670746"
+		}", 
+"		transactionList: "[Transaction{
+"			transactionId: "Transaction0",
+"			data: "Some transaction data",
+&			signature: "Transaction signature"
+		}, Transaction{
+"			transactionId: "Transaction1",
+(			data: "Some other transaction data",
+2			signature: "A different transaction signature"
+		}]"
+	}, Block{
+		blockId: "7", 
+R		blockHash: "6F04AAA74D326207DD04D21FED877DC3C885BE6F3A542E2B6CC086634B9DD577", 
+		blockHeader: "BlockHeader{
+Z			previousBlockHash: "0532F1E7C62826BE0E06D9854E48B408A2232C738B2E45DF58581242D19FF8AF",
+5			merkleRoot: "merkle_tree.DummyTreeNode@3acce121",
+			timestamp: "1625759670746"
+		}", 
+"		transactionList: "[Transaction{
+"			transactionId: "Transaction1",
+(			data: "Some other transaction data",
+2			signature: "A different transaction signature"
+		}, Transaction{
+"			transactionId: "Transaction0",
+"			data: "Some transaction data",
+&			signature: "Transaction signature"
+		}]"
+	}]"
+}
+
+BlockHeader{
+
+X	previousBlockHash: "0000000000000000000000000000000000000000000000000000000000000000",
+
+3	merkleRoot: "merkle_tree.DummyTreeNode@1fc1d59c",
+
+	timestamp: "12345"
+
+}
+Block{
+	blockId: "17", 
+Q	blockHash: "ED72460C4DB7EB64ED43480E284317E8997FC614AE31F5772E67E65BA3162F91", 
+	blockHeader: "BlockHeader{
+Y		previousBlockHash: "0000000000000000000000000000000000000000000000000000000000000000",
+3		merkleRoot: "merkle_tree.DummyTreeNode@a8eca58",
+		timestamp: "1625759670822"
+	}", 
+!	transactionList: "[Transaction{
+!		transactionId: "Transaction0",
+!		data: "Some transaction data",
+%		signature: "Transaction signature"
+	}, Transaction{
+!		transactionId: "Transaction1",
+'		data: "Some other transaction data",
+1		signature: "A different transaction signature"
+	}]"
+}
