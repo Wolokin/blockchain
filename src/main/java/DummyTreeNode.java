@@ -1,10 +1,18 @@
+import java.util.LinkedList;
+
 public class DummyTreeNode implements Hashable{
-    public DummyTreeNode() {
+    byte[] hash;
+
+    public DummyTreeNode(LinkedList<Transaction> transactionsList) {
+        StringBuilder toHash = new StringBuilder();
+        for(Transaction transaction : transactionsList) {
+            toHash.append(transaction.toString());
+        }
+        hash = Consts.hashBytes(toHash.toString().getBytes());
     }
 
-
     @Override
-    public String getHash() {
-        return "0".repeat(32);
+    public byte[] getHash() {
+        return hash;
     }
 }

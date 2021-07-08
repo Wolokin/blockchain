@@ -1,8 +1,10 @@
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
-        Block block = new Block("0".repeat(32), new DummyTreeNode(), null);
+        Block block = new Block(new byte[Consts.hashLength], new LinkedList<>());
         BlockHeader blockHeader = block.getBlockHeader();
-        block.mineBlock();
-        System.out.println(blockHeader.getHash());
+        System.out.println(BlockHeader.bytesToHexString(blockHeader.getHash()));
     }
 }

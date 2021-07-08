@@ -1,49 +1,57 @@
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.Arrays;
 
 public class BlockHeader implements Hashable{
-    private final String previousBlockHash;
+    private final byte[] previousBlockHash;
     private final Hashable merkleRoot;
     private final long timestamp;
-    private int nonce;
 
-    private MessageDigest digest = null;    // used for sha-256
-
-    public BlockHeader(String previousBlockHash, Hashable merkleRoot) {
+    public BlockHeader(byte[] previousBlockHash, long timestamp, Hashable merkleRoot) {
         this.previousBlockHash = previousBlockHash;
         this.merkleRoot = merkleRoot;
-        timestamp = Instant.now().toEpochMilli();
-        nonce = 0;
+        this.timestamp = timestamp;
+    }
 
-        try {
-            digest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        assert digest != null;
+    public BlockHeader(byte[] previousBlockHash, Hashable merkleRoot) {
+        this(previousBlockHash, Instant.now().toEpochMilli(), merkleRoot);
     }
 
     // Courtesy of https://stackoverflow.com/a/943963/14708982
-    public static String toHex(byte[] bytes) {
+    public static String bytesToHexString(byte[] bytes) {
         BigInteger bi = new BigInteger(1, bytes);
         return String.format("%0" + (bytes.length << 1) + "X", bi);
     }
 
-    @Override
-    public String getHash() {
-        String toHash = previousBlockHash
-                + merkleRoot.getHash()
-                + timestamp
-                + nonce;
-        byte[] encodedHash = digest.digest(
-                toHash.getBytes(StandardCharsets.UTF_8));
-        return toHex(encodedHash);
+    public byte[] getPreviousBlockHash() {
+        return previousBlockHash;
     }
 
-    public void setNonce(int newNonce) {
-        nonce = newNonce;
+    @Override
+    public byte[] getHash() {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        DataOutputStream dos = new DataOutputStream(baos);
+        try {
+            dos.write(previousBlockHash);
+            dos.write(merkleRoot.getHash());
+            dos.writeLong(timestamp);
+            dos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return Consts.hashBytes(baos.toByteArray());
+    }
+
+    @Override
+    public String toString() {
+        return "BlockHeader{" +
+                "\n\tpreviousBlockHash: \"" + BlockHeader.bytesToHexString(previousBlockHash) +
+                "\",\n\tmerkleRoot: \"" + merkleRoot +
+                "\",\n\ttimestamp: \"" + timestamp +
+                "\"\n}";
     }
 }

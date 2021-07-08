@@ -1,3 +1,5 @@
+
+
 public interface Hashable {
-    String getHash();
+    byte[] getHash();
 }

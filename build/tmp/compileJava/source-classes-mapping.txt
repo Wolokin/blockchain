@@ -1,14 +1,16 @@
-Hashable.java
- Hashable
-BlockHeader.java
- BlockHeader
-DummyTreeNode.java
- DummyTreeNode
 Transaction.java
  Transaction
+Hashable.java
+ Hashable
+DummyTreeNode.java
+ DummyTreeNode
+Consts.java
+ Consts
 Main.java
  Main
 Blockchain.java
  Blockchain
 Block.java
  Block
+BlockHeader.java
+ BlockHeader
